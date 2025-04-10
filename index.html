@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tablas de Verdad</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Práctica de Tablas de Verdad</h1>
+
+  <label for="numVars">Cantidad de variables:</label>
+  <select id="numVars">
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <button onclick="generarTabla()">Generar tabla</button>
+
+  <div id="expresionLogica"></div>
+  <div id="tablaContainer"></div>
+
+  <button onclick="verificarRespuestas()">Verificar respuestas</button>
+  <div id="resultado"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
