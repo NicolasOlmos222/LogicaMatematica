@@ -101,7 +101,7 @@ function generarCombinaciones(n) {
       const tr = document.createElement('tr');
       fila.forEach(val => {
         const td = document.createElement('td');
-        td.innerText = val;
+        td.innerText = val === 1 ? 'V' : 'F';
         tr.appendChild(td);
       });
   
@@ -130,7 +130,18 @@ function generarCombinaciones(n) {
     combinaciones.forEach((fila, i) => {
       const esperado = evaluarExpresion(expresion, fila, variables);
       const input = document.querySelector(`input[data-index="${i}"]`);
-      const valor = parseInt(input.value);
+      const respuesta = input.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+        let valor;
+        if (respuesta === 'v') {
+        valor = 1;
+        } else if (respuesta === 'f') {
+        valor = 0;
+        } else {
+        input.style.backgroundColor = "#ffd966"; // Amarillo si la entrada no es válida
+        return;
+        }
+
   
       if (valor === esperado) {
         input.style.backgroundColor = "#b2f7b2";
@@ -151,42 +162,43 @@ function generarCombinaciones(n) {
     if (ayuda.innerHTML !== '') return;
   
     const tablaOperadores = `
-      <h3>Tablas de Verdad</h3>
-  
-      <strong>¬ (Negación)</strong>
-      <table>
-        <tr><th>A</th><th>¬A</th></tr>
-        <tr><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td></tr>
-      </table>
-  
-      <strong>∧ (Y lógico)</strong>
-      <table>
-        <tr><th>A</th><th>B</th><th>A ∧ B</th></tr>
-        <tr><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>0</td></tr>
-        <tr><td>1</td><td>0</td><td>0</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td></tr>
-      </table>
-  
-      <strong>∨ (O lógico)</strong>
-      <table>
-        <tr><th>A</th><th>B</th><th>A ∨ B</th></tr>
-        <tr><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>1</td></tr>
-      </table>
-  
-      <strong>⊕ (XOR)</strong>
-      <table>
-        <tr><th>A</th><th>B</th><th>A ⊕ B</th></tr>
-        <tr><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td>0</td><td>1</td><td>1</td></tr>
-        <tr><td>1</td><td>0</td><td>1</td></tr>
-        <tr><td>1</td><td>1</td><td>0</td></tr>
-      </table>
-    `;
+  <h3>Tablas de Verdad</h3>
+
+  <strong>¬ (Negación)</strong>
+  <table>
+    <tr><th>A</th><th>¬A</th></tr>
+    <tr><td>F</td><td>V</td></tr>
+    <tr><td>V</td><td>F</td></tr>
+  </table>
+
+  <strong>∧ (Y lógico)</strong>
+  <table>
+    <tr><th>A</th><th>B</th><th>A ∧ B</th></tr>
+    <tr><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>V</td><td>F</td></tr>
+    <tr><td>V</td><td>F</td><td>F</td></tr>
+    <tr><td>V</td><td>V</td><td>V</td></tr>
+  </table>
+
+  <strong>∨ (O lógico)</strong>
+  <table>
+    <tr><th>A</th><th>B</th><th>A ∨ B</th></tr>
+    <tr><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>V</td><td>V</td></tr>
+    <tr><td>V</td><td>F</td><td>V</td></tr>
+    <tr><td>V</td><td>V</td><td>V</td></tr>
+  </table>
+
+  <strong>⊕ (XOR)</strong>
+  <table>
+    <tr><th>A</th><th>B</th><th>A ⊕ B</th></tr>
+    <tr><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>V</td><td>V</td></tr>
+    <tr><td>V</td><td>F</td><td>V</td></tr>
+    <tr><td>V</td><td>V</td><td>F</td></tr>
+  </table>
+`;
+
   
     ayuda.innerHTML = tablaOperadores;
   }
