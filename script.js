@@ -1,12 +1,13 @@
 function generarCombinaciones(n) {
     const combinaciones = [];
     const totalFilas = Math.pow(2, n);
-    for (let i = 0; i < totalFilas; i++) {
+    for (let i = totalFilas - 1; i >= 0; i--) {
       const fila = i.toString(2).padStart(n, '0').split('').map(bit => parseInt(bit));
       combinaciones.push(fila);
     }
     return combinaciones;
   }
+  
   
   let expresion = "";
   let combinaciones = [];
@@ -162,42 +163,43 @@ function generarCombinaciones(n) {
     if (ayuda.innerHTML !== '') return;
   
     const tablaOperadores = `
-  <h3>Tablas de Verdad</h3>
-
-  <strong>¬ (Negación)</strong>
-  <table>
-    <tr><th>A</th><th>¬A</th></tr>
-    <tr><td>F</td><td>V</td></tr>
-    <tr><td>V</td><td>F</td></tr>
-  </table>
-
-  <strong>∧ (Y lógico)</strong>
-  <table>
-    <tr><th>A</th><th>B</th><th>A ∧ B</th></tr>
-    <tr><td>F</td><td>F</td><td>F</td></tr>
-    <tr><td>F</td><td>V</td><td>F</td></tr>
-    <tr><td>V</td><td>F</td><td>F</td></tr>
-    <tr><td>V</td><td>V</td><td>V</td></tr>
-  </table>
-
-  <strong>∨ (O lógico)</strong>
-  <table>
-    <tr><th>A</th><th>B</th><th>A ∨ B</th></tr>
-    <tr><td>F</td><td>F</td><td>F</td></tr>
-    <tr><td>F</td><td>V</td><td>V</td></tr>
-    <tr><td>V</td><td>F</td><td>V</td></tr>
-    <tr><td>V</td><td>V</td><td>V</td></tr>
-  </table>
-
-  <strong>⊕ (XOR)</strong>
-  <table>
-    <tr><th>A</th><th>B</th><th>A ⊕ B</th></tr>
-    <tr><td>F</td><td>F</td><td>F</td></tr>
-    <tr><td>F</td><td>V</td><td>V</td></tr>
-    <tr><td>V</td><td>F</td><td>V</td></tr>
-    <tr><td>V</td><td>V</td><td>F</td></tr>
-  </table>
-`;
+    <h3>Tablas de Verdad</h3>
+  
+    <strong>¬ (Negación)</strong>
+    <table>
+      <tr><th>A</th><th>¬A</th></tr>
+      <tr><td>V</td><td>F</td></tr>
+      <tr><td>F</td><td>V</td></tr>
+    </table>
+  
+    <strong>∧ (Y lógico)</strong>
+    <table>
+      <tr><th>A</th><th>B</th><th>A ∧ B</th></tr>
+      <tr><td>V</td><td>V</td><td>V</td></tr>
+      <tr><td>V</td><td>F</td><td>F</td></tr>
+      <tr><td>F</td><td>V</td><td>F</td></tr>
+      <tr><td>F</td><td>F</td><td>F</td></tr>
+    </table>
+  
+    <strong>∨ (O lógico)</strong>
+    <table>
+      <tr><th>A</th><th>B</th><th>A ∨ B</th></tr>
+      <tr><td>V</td><td>V</td><td>V</td></tr>
+      <tr><td>V</td><td>F</td><td>V</td></tr>
+      <tr><td>F</td><td>V</td><td>V</td></tr>
+      <tr><td>F</td><td>F</td><td>F</td></tr>
+    </table>
+  
+    <strong>⊕ (XOR)</strong>
+    <table>
+      <tr><th>A</th><th>B</th><th>A ⊕ B</th></tr>
+      <tr><td>V</td><td>V</td><td>F</td></tr>
+      <tr><td>V</td><td>F</td><td>V</td></tr>
+      <tr><td>F</td><td>V</td><td>V</td></tr>
+      <tr><td>F</td><td>F</td><td>F</td></tr>
+    </table>
+  `;
+  
 
   
     ayuda.innerHTML = tablaOperadores;
