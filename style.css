@@ -85,4 +85,65 @@
     font-size: 1.1rem;
     font-weight: bold;
   }
+  #ayudaMemoria table {
+    margin: 10px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  #ayudaMemoria th, #ayudaMemoria td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+  }
+  #botonAyudaContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  #btnAyuda {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+  }
+  
+  #btnAyuda:hover {
+    background-color: #2980b9;
+  }
+  
+  .panelAyuda {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 250px;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 999;
+  }
+  
+  .panelAyuda table {
+    margin: 10px auto;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  
+  .panelAyuda th, .panelAyuda td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+  }
   

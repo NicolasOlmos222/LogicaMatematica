@@ -6,22 +6,28 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Práctica de Tablas de Verdad</h1>
+    <div id="botonAyudaContainer">
+        <button id="btnAyuda" onclick="mostrarAyuda()">🛈 Ayuda</button>
+    </div>
+    <div id="ayudaMemoria" class="panelAyuda"></div>
+      
 
-  <label for="numVars">Cantidad de variables:</label>
-  <select id="numVars">
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-  <button onclick="generarTabla()">Generar tabla</button>
+    <h1>Práctica de Tablas de Verdad</h1>
 
-  <div id="expresionLogica"></div>
-  <div id="tablaContainer"></div>
+    <label for="numVars">Cantidad de variables:</label>
+    <select id="numVars">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <button onclick="generarTabla()">Generar tabla</button>
 
-  <button onclick="verificarRespuestas()">Verificar respuestas</button>
-  <div id="resultado"></div>
+    <div id="expresionLogica"></div>
+    <div id="tablaContainer"></div>
 
-  <script src="script.js"></script>
+    <button onclick="verificarRespuestas()">Verificar respuestas</button>
+    <div id="resultado"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>

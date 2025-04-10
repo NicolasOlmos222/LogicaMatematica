@@ -144,3 +144,50 @@ function generarCombinaciones(n) {
       `Tuviste ${correctos} respuestas correctas de ${combinaciones.length}`;
   }
   
+  function mostrarAyuda() {
+    const ayuda = document.getElementById('ayudaMemoria');
+    ayuda.style.display = ayuda.style.display === 'block' ? 'none' : 'block';
+  
+    if (ayuda.innerHTML !== '') return;
+  
+    const tablaOperadores = `
+      <h3>Tablas de Verdad</h3>
+  
+      <strong>¬ (Negación)</strong>
+      <table>
+        <tr><th>A</th><th>¬A</th></tr>
+        <tr><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td></tr>
+      </table>
+  
+      <strong>∧ (Y lógico)</strong>
+      <table>
+        <tr><th>A</th><th>B</th><th>A ∧ B</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+  
+      <strong>∨ (O lógico)</strong>
+      <table>
+        <tr><th>A</th><th>B</th><th>A ∨ B</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table>
+  
+      <strong>⊕ (XOR)</strong>
+      <table>
+        <tr><th>A</th><th>B</th><th>A ⊕ B</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+    `;
+  
+    ayuda.innerHTML = tablaOperadores;
+  }
+  
